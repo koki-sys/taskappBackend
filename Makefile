@@ -25,6 +25,7 @@ install-recommend-packages:
 init:
 	docker compose up -d --build
 	docker compose exec app composer install
+	docker compose exec app npm install
 	docker compose exec app cp .env.example .env
 	docker compose exec app php artisan key:generate
 	docker compose exec app php artisan storage:link
@@ -105,3 +106,7 @@ ide-helper:
 	docker compose exec app php artisan ide-helper:generate
 	docker compose exec app php artisan ide-helper:meta
 	docker compose exec app php artisan ide-helper:models --nowrite
+yarn-run-dev:
+	docker compose exec app yarn run dev
+yarn-run-build:
+	docker compose exec app yarn run build
