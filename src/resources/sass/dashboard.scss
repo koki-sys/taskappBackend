@@ -1,0 +1,77 @@
+.app-card {
+    background-color: #f4d35e;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.app {
+    width: 25%;
+    height: 25%;
+}
+
+.dashboard-task-card {
+    background-color: #a9bcd0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.task {
+    text-decoration: none;
+    word-break: break-all;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border: 1px solid rgba(0, 0, 0, 0.12);
+}
+
+.post-card {
+    background-color: #58a4b0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.post-item {
+    background-color: #58a4b0;
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid #FFFFFF;
+}
+
+.box-card {
+    background-color: #a9bcd0;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background-clip: border-box;
+    border: 1px solid rgba(0, 0, 0, 0.125);
+    border-radius: 0.25rem;
+}
+
+.box-item {
+    background-color: #a9bcd0;
+    position: relative;
+    display: block;
+    padding: 0.75rem 1.25rem;
+    border-bottom: 1px solid #FFFFFF;
+}
