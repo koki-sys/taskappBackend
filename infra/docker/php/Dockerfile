@@ -47,8 +47,8 @@ FROM base AS deploy
 COPY ./infra/docker/php/php.deploy.ini /usr/local/etc/php/php.ini
 COPY ./src /data
 
-RUN composer install -q -n --no-ansi --no-dev --no-scripts --no-progress --prefer-dist \
-    && composer dump-autoload \
-    && chmod -R 777 storage bootstrap/cache \
-    && php artisan optimize:clear \
-    && php artisan optimize
+RUN composer install -q -n --no-ansi --no-dev --no-scripts --no-progress --prefer-dist 
+RUN composer dump-autoload 
+RUN chmod -R 777 storage bootstrap/cache 
+RUN php artisan optimize:clear 
+RUN php artisan optimize
