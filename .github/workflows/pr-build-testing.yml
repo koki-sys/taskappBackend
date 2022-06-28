@@ -49,7 +49,7 @@ jobs:
           docker compose exec app composer install
 
       - name: Library Permission
-        run: chmod 777 -R src/vendor
+        run: sudo chmod 777 -R src/vendor
 
       - name: Laravel Version
         run: docker compose exec app php artisan --version
