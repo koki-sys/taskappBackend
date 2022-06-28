@@ -40,8 +40,13 @@ jobs:
       - name: Composer Version
         run: docker compose exec app composer --version
 
-      - name: Create & Start Docker Containers
-        run: docker compose up -d
+      - name: npm Version
+        run: docker compose exec app npm --version
+
+      - name: Library install
+        run: |
+          docker compose exec app npm install
+          docker compose exec app composer install
 
       - name: Laravel Version
         run: docker compose exec app php artisan --version
