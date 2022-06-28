@@ -82,6 +82,9 @@ jobs:
     steps:
       - uses: actions/checkout@v3
 
+      - name: Settings
+        run: echo APP_BUILD_TARGET=deploy > .env
+
       - name: Docker Version
         run: docker version
 
