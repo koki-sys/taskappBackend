@@ -12,9 +12,9 @@
 */
 
 // ホーム画面
-Route::get('/{any}', function () {
-    return view('home');
-})->where('any', '.*');
+Route::get('/', function () {
+    return "ホーム";
+});
 
 /*
 Route::get("/index", 'HomeController@index');
