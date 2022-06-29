@@ -32,7 +32,13 @@ class AddForeignToTasksmanagesTable extends Migration
     public function down()
     {
         Schema::table('tasksmanages', function (Blueprint $table) {
-            //
+            $table->dropForeign('tasksmanages_task_id_foreign');
+            $table->dropForeign('tasksmanages_user_id_foreign');
+            $table->dropForeign('tasksmanages_team_id_foreign');
+
+            $table->dropColumn('task_id');
+            $table->dropColumn('user_id');
+            $table->dropColumn('team_id');
         });
     }
 }
