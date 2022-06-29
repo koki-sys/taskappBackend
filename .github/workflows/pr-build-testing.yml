@@ -1,16 +1,19 @@
-name: laravel-create-project
+name: pr-build-testing
 
 on:
   pull_request:
   schedule:
-    - cron:  '0 0 * * *'
+    - cron: "0 0 * * *"
 
 jobs:
-  docker-build:
+  init-build-test:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v3
+
+      - name: Settings
+        run: echo APP_BUILD_TARGET=deploy > .env
 
       - name: Docker Version
         run: docker version
@@ -18,10 +21,8 @@ jobs:
       - name: Build Docker Images
         run: docker compose build
 
-      - name: Create & Start Docker Containers
-        run: |
-          mkdir src
-          docker compose up -d
+      - name: Start Docker Containers
+        run: docker compose up -d
 
       - name: OS Version
         run: |
@@ -34,8 +35,18 @@ jobs:
       - name: Composer Version
         run: docker compose exec app composer --version
 
-      - name: Create Laravel Project
-        run: docker compose exec app composer create-project --prefer-dist laravel/laravel .
+      - name: init Laravel Project
+        run: |
+          docker compose up -d --build
+          docker compose exec app composer install
+          docker compose exec app npm install
+          docker compose exec app cp .env.example .env
+          echo APP_BUILD_TARGET=deploy > .env
+          docker compose exec app composer dump-autoload
+          docker compose exec app php artisan key:generate
+          docker compose exec app php artisan storage:link
+          docker compose exec app chmod -R 777 storage bootstrap/cache
+          docker compose exec app php artisan migrate:fresh --seed
 
       - name: Laravel Version
         run: docker compose exec app php artisan --version
