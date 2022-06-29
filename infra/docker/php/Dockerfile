@@ -45,7 +45,7 @@ COPY ./infra/docker/php/php.development.ini /usr/local/etc/php/php.ini
 FROM base AS deploy
 
 COPY ./infra/docker/php/php.deploy.ini /usr/local/etc/php/php.ini
-COPY ./src/* /data
+COPY ./src /data
 
 RUN composer install -n --no-ansi --no-dev --no-scripts --no-progress --prefer-dist 
 RUN composer dump-autoload 
