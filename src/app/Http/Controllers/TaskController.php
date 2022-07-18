@@ -3,8 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Tasksmanage;
-use App\User;
-use App\Task;
+use App\Models\User;
+use App\Models\Task;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
