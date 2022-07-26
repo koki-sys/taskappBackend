@@ -20,36 +20,36 @@ class UsersTableSeeder extends Seeder
             [
                 'id' => 1,
                 'name' => 'testA',
-                'email' => Str::random(10) . '@example.com',
-                'password' => Hash::make('password'),
+                'email' => 'testA@example.com',
+                'password' => Hash::make('testtest1@'),
                 'team_id' => 9999
             ],
             [
                 'id' => 2,
                 'name' => 'testB',
-                'email' => Str::random(10) . '@example.com',
-                'password' => Hash::make('password'),
+                'email' => 'testB@example.com',
+                'password' => Hash::make('testtest2@'),
                 'team_id' => 1
             ],
             [
                 'id' => 3,
                 'name' => 'testC',
-                'email' => Str::random(10) . '@example.com',
-                'password' => Hash::make('password'),
+                'email' => 'testC@example.com',
+                'password' => Hash::make('testtest3@'),
                 'team_id' => 1
             ],
             [
                 'id' => 4,
                 'name' => 'testD',
-                'email' => Str::random(10) . '@example.com',
-                'password' => Hash::make('password'),
+                'email' => 'testD@example.com',
+                'password' => Hash::make('testtest4@'),
                 'team_id' => 2
             ],
             [
                 'id' => 5,
                 'name' => 'testE',
-                'email' => Str::random(10) . '@example.com',
-                'password' => Hash::make('password'),
+                'email' => 'testE@example.com',
+                'password' => Hash::make('testtest5@'),
                 'team_id' => 2
             ]
         ];

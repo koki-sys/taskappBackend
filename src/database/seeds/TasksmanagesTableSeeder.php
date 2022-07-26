@@ -37,7 +37,7 @@ class TasksmanagesTableSeeder extends Seeder
                 'task_id' => 4,
                 'user_id' => 3,
                 'team_id' => 1
-            ]
+            ],
         ];
         DB::table('tasksmanages')->insert($dataArray);
     }
