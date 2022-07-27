@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Tasksmanage;
+use App\Models\Tasksmanage;
 use App\Models\User;
 use App\Models\Task;
 use Illuminate\Http\Request;
@@ -52,16 +52,18 @@ class TaskController extends Controller
      * @author koki-sys
      * @return view
      */
-    public function doing()
+    public function doing(Request $request)
     {
+        $user = User::find($request->id);
+
         // DBから取得する処理
         $doingTasks = Tasksmanage::leftJoin('tasks', 'tasksmanages.task_id', '=', 'tasks.id')
-        ->leftJoin('teams', 'tasksmanages.team_id', '=', 'teams.id')
-        ->leftJoin('users', 'tasksmanages.user_id', '=', 'users.id')
-        ->where('tasksmanages.team_id', User::where('name', session('userName'))->first()->team_id)
-        ->where('flg', 0)
-        ->select('tasksmanages.*', 'tasks.id as task_id', 'tasks.name as task_name', 'tasks.flg', 'tasks.deadline', 'teams.name as team_name', 'users.name as user_name')
-        ->get();
+            ->leftJoin('teams', 'tasksmanages.team_id', '=', 'teams.id')
+            ->leftJoin('users', 'tasksmanages.user_id', '=', 'users.id')
+            ->where('tasksmanages.team_id', $user->team_id)
+            ->where('flg', 0)
+            ->select('tasksmanages.*', 'tasks.id as task_id', 'tasks.name as task_name', 'tasks.flg', 'tasks.deadline', 'teams.name as team_name', 'users.name as user_name')
+            ->get();
 
         return $doingTasks;
     }
@@ -74,13 +76,14 @@ class TaskController extends Controller
      */
     public function done(Request $request)
     {
+        $user = User::find($request->id);
         $doneTasks = Tasksmanage::leftJoin('tasks', 'tasksmanages.task_id', '=', 'tasks.id')
-        ->leftJoin('teams', 'tasksmanages.team_id', '=', 'teams.id')
-        ->leftJoin('users', 'tasksmanages.user_id', '=', 'users.id')
-        ->where('tasksmanages.team_id', $request->team_id)
-        ->where('flg', 1)
-        ->select('tasksmanages.*', 'tasks.id as task_id', 'tasks.name as task_name', 'tasks.flg', 'tasks.deadline', 'teams.name as team_name', 'users.name as user_name')
-        ->get();
+            ->leftJoin('teams', 'tasksmanages.team_id', '=', 'teams.id')
+            ->leftJoin('users', 'tasksmanages.user_id', '=', 'users.id')
+            ->where('tasksmanages.team_id', $user->team_id)
+            ->where('flg', 1)
+            ->select('tasksmanages.*', 'tasks.id as task_id', 'tasks.name as task_name', 'tasks.flg', 'tasks.deadline', 'teams.name as team_name', 'users.name as user_name')
+            ->get();
 
         return $doneTasks;
     }
